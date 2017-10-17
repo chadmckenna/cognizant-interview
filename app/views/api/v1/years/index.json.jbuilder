@@ -4,7 +4,7 @@ json.array! @years do |year|
       json.extract! album, :id, :name, :created_at, :updated_at
       json.artist album.artist, :id, :name
       json.genre album.genre.name
-      json.url album_url(album, format: :json)
+      json.url api_v1_album_url(album, format: :json)
     end
   end
 end
