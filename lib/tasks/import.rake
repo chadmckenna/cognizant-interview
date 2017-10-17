@@ -9,7 +9,6 @@ namespace :db do
     CSV.foreach(args[:filename], { col_sep: ',', headers: true, encoding: "ISO-8859-1:UTF-8" }) do |row|
       puts "#{row['album']} by #{row['artist']} -- #{row['genre']} -- #{row['year']}..."
       artist = Artist.where(name: row['artist']).first_or_create
-      puts artist.inspect
       album = Album.where(
         name: row['album'],
         artist: artist
@@ -17,7 +16,6 @@ namespace :db do
           genre: row['genre'],
           year: row['year'].to_i
         )
-      puts album.inspect
     end
     puts "Import complete"
   end

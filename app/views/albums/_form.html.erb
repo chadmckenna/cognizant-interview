@@ -26,6 +26,11 @@
     <%= form.number_field :year, id: :album_year %>
   </div>
 
+  <div class="field">
+    <%= form.label :artist_id %>
+    <%= form.text_field :artist_id, id: :album_artist_id %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -15,5 +15,10 @@
   <%= @album.year %>
 </p>
 
+<p>
+  <strong>Artist:</strong>
+  <%= @album.artist %>
+</p>
+
 <%= link_to 'Edit', edit_album_path(@album) %> |
 <%= link_to 'Back', albums_path %>

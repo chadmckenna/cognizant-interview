@@ -4,8 +4,10 @@ one:
   name: MyString
   genre: MyString
   year: 1
+  artist: one
 
 two:
   name: MyString
   genre: MyString
   year: 1
+  artist: two
