@@ -2,12 +2,6 @@
 
 one:
   name: MyString
-  genre: one
-  year: 1
-  artist: one
 
 two:
   name: MyString
-  genre: two
-  year: 1
-  artist: two
