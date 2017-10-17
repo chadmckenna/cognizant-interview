@@ -20,7 +20,7 @@ class Api::V1::AlbumsController < Api::V1::ApplicationController
 
     respond_to do |format|
       if @album.save
-        format.json { render :show, status: :created, location: @album }
+        format.json { render :show, status: :created, location: api_v1_album_url(@album) }
       else
         format.json { render json: @album.errors, status: :unprocessable_entity }
       end
@@ -30,7 +30,7 @@ class Api::V1::AlbumsController < Api::V1::ApplicationController
   def update
     respond_to do |format|
       if @album.update(album_params)
-        format.json { render :show, status: :ok, location: @album }
+        format.json { render :show, status: :ok, location: api_v1_album_url(@album) }
       else
         format.json { render json: @album.errors, status: :unprocessable_entity }
       end
