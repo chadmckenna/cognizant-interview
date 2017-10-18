@@ -6,43 +6,24 @@ class GenresControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get genres_url
-    assert_response :success
-  end
-
-  test "should get new" do
-    get new_genre_url
+    get api_v1_genres_url(format: :json)
     assert_response :success
   end
 
   test "should create genre" do
-    assert_difference('Genre.count') do
-      post genres_url, params: { genre: { name: @genre.name } }
+    assert_difference('Genre.count', 0) do
+      post api_v1_genres_url(format: :json), params: { genre: { name: @genre.name } }
     end
 
-    assert_redirected_to genre_url(Genre.last)
+    assert_difference('Genre.count') do
+      post api_v1_genres_url(format: :json), params: { genre: { name: 'New and Unknown Name' } }
+    end
+
+    assert_response :created
   end
 
   test "should show genre" do
-    get genre_url(@genre)
+    get api_v1_genre_url(@genre, format: :json)
     assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_genre_url(@genre)
-    assert_response :success
-  end
-
-  test "should update genre" do
-    patch genre_url(@genre), params: { genre: { name: @genre.name } }
-    assert_redirected_to genre_url(@genre)
-  end
-
-  test "should destroy genre" do
-    assert_difference('Genre.count', -1) do
-      delete genre_url(@genre)
-    end
-
-    assert_redirected_to genres_url
   end
 end

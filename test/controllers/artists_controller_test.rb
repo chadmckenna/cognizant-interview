@@ -6,43 +6,24 @@ class ArtistsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should get index" do
-    get artists_url
-    assert_response :success
-  end
-
-  test "should get new" do
-    get new_artist_url
+    get api_v1_artists_url(format: :json)
     assert_response :success
   end
 
   test "should create artist" do
-    assert_difference('Artist.count') do
-      post artists_url, params: { artist: { name: @artist.name } }
+    assert_difference('Artist.count', 0) do
+      post api_v1_artists_url(format: :json), params: { artist: { name: @artist.name } }
     end
 
-    assert_redirected_to artist_url(Artist.last)
+    assert_difference('Artist.count') do
+      post api_v1_artists_url(format: :json), params: { artist: { name: "New and Unknown Name" } }
+    end
+
+    assert_response :created
   end
 
   test "should show artist" do
-    get artist_url(@artist)
+    get api_v1_artist_url(@artist, format: :json)
     assert_response :success
-  end
-
-  test "should get edit" do
-    get edit_artist_url(@artist)
-    assert_response :success
-  end
-
-  test "should update artist" do
-    patch artist_url(@artist), params: { artist: { name: @artist.name } }
-    assert_redirected_to artist_url(@artist)
-  end
-
-  test "should destroy artist" do
-    assert_difference('Artist.count', -1) do
-      delete artist_url(@artist)
-    end
-
-    assert_redirected_to artists_url
   end
 end
