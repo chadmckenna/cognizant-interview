@@ -15,6 +15,9 @@ By Chad McKenna
 bundle install
 rake db:create
 rake db:migrate
+# Importer to load .csv into database, any CSV file with the header
+# `album,artist,genre,year`
+rake db:import['albums.csv']
 rails s
 ```
 
